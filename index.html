@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>VPN-FAST-AI | Happ iOS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>VPN-FAST-AI | Установка в Happ</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --accent-color: #14ffec;
-            --secondary-accent: #8B5CF6;
-            --card-bg: rgba(15, 20, 30, 0.7);
-            --text-main: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.6);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: var(--bg-color);
-            color: var(--text-main);
+            background: #0a0a0a;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
             justify-content: center;
             padding: 24px 16px;
+            min-height: 100vh;
         }
 
         .container {
@@ -44,10 +32,10 @@
         }
 
         /* Happ Icon */
-        .app-icon {
+        .happ-icon {
             width: 88px;
             height: 88px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+            background: linear-gradient(135deg, #14ffec, #8B5CF6);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -56,12 +44,12 @@
             margin-bottom: 24px;
             position: relative;
         }
-        .app-icon::after {
+        .happ-icon::after {
             content: '';
             position: absolute;
             inset: -4px;
             border-radius: 50%;
-            border: 2px solid var(--accent-color);
+            border: 2px solid #14ffec;
             animation: pulse-ring 2s infinite;
         }
         @keyframes pulse-ring {
@@ -72,18 +60,17 @@
         h1 {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #fff, var(--secondary-accent), var(--accent-color));
+            background: linear-gradient(to right, #fff, #8B5CF6, #14ffec);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -1px;
             margin-bottom: 8px;
         }
 
-        .forever-badge {
+        .forever {
             background: rgba(20, 255, 236, 0.1);
             border: 1px solid rgba(20, 255, 236, 0.3);
-            color: var(--accent-color);
+            color: #14ffec;
             padding: 4px 14px;
             border-radius: 40px;
             font-size: 0.8rem;
@@ -94,7 +81,7 @@
 
         /* Counter */
         .counter {
-            background: var(--card-bg);
+            background: rgba(15, 20, 30, 0.7);
             backdrop-filter: blur(8px);
             border-radius: 60px;
             padding: 12px 20px;
@@ -106,52 +93,34 @@
             font-size: 1.5rem;
             font-weight: 800;
             color: #ffb800;
-            display: inline-block;
-            margin: 0 4px;
         }
 
-        /* Promo card */
-        .promo-card {
+        /* Promo */
+        .promo {
             background: linear-gradient(135deg, rgba(20, 255, 236, 0.12), rgba(139, 92, 246, 0.12));
             border-radius: 28px;
             padding: 24px;
             margin-bottom: 24px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.05);
             width: 100%;
         }
-        .promo-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-        .promo-card p {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-        }
 
-        /* Main Button */
-        .btn-primary {
-            background: linear-gradient(105deg, var(--accent-color), #00d1c1);
+        /* Button */
+        .btn {
+            background: linear-gradient(105deg, #14ffec, #00d1c1);
             border: none;
             width: 100%;
             padding: 16px;
             border-radius: 60px;
             font-weight: 800;
             font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
             cursor: pointer;
-            transition: transform 0.1s ease;
+            transition: transform 0.1s;
             margin-bottom: 32px;
             color: #000;
-            text-decoration: none;
         }
-        .btn-primary:active { transform: scale(0.97); }
+        .btn:active { transform: scale(0.97); }
 
-        /* QR Section */
+        /* QR */
         .qr-section {
             margin-bottom: 32px;
             display: flex;
@@ -182,7 +151,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--accent-color);
+            border: 2px solid #14ffec;
             border-radius: 28px;
             animation: ripple 2.5s infinite;
             opacity: 0;
@@ -194,8 +163,8 @@
             100% { transform: scale(1.3); opacity: 0; }
         }
 
-        /* Services grid */
-        .services-grid {
+        /* Services */
+        .services {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
@@ -203,16 +172,14 @@
             margin-bottom: 40px;
         }
         @media (max-width: 450px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .services { grid-template-columns: repeat(2, 1fr); }
         }
-        .service-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
+        .service {
+            background: rgba(15, 20, 30, 0.7);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
             padding: 10px;
             font-size: 0.8rem;
-            font-weight: 500;
         }
 
         /* Steps */
@@ -226,17 +193,16 @@
             gap: 16px;
             margin-bottom: 20px;
         }
-        .step-number {
+        .step-num {
             width: 36px;
             height: 36px;
-            background: var(--accent-color);
+            background: #14ffec;
             color: #000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            flex-shrink: 0;
         }
 
         /* FAQ */
@@ -245,18 +211,15 @@
             margin-bottom: 32px;
         }
         .faq-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(8px);
+            background: rgba(15, 20, 30, 0.7);
             border-radius: 20px;
             margin-bottom: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
             text-align: left;
         }
         .faq-question {
             padding: 16px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             cursor: pointer;
             font-weight: 600;
         }
@@ -264,8 +227,8 @@
             padding: 0 16px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: var(--text-dim);
+            transition: max-height 0.3s;
+            color: rgba(255,255,255,0.6);
             font-size: 0.85rem;
         }
         .faq-item.active .faq-answer {
@@ -273,28 +236,25 @@
             padding-bottom: 16px;
         }
 
-        /* Share & App Store */
         .share-btn {
             background: transparent;
-            border: 1px solid var(--text-dim);
-            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
             padding: 12px 28px;
             border-radius: 60px;
             font-weight: 600;
             cursor: pointer;
             margin-bottom: 24px;
         }
-        .appstore-link {
-            display: inline-block;
+
+        .appstore img {
+            height: 44px;
             margin-bottom: 24px;
         }
-        .appstore-link img {
-            height: 44px;
-        }
+
         .disclaimer {
             font-size: 0.65rem;
             color: rgba(255,255,255,0.3);
-            max-width: 280px;
         }
 
         #toast {
@@ -302,7 +262,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: var(--accent-color);
+            background: #14ffec;
             color: #000;
             padding: 12px 24px;
             border-radius: 60px;
@@ -317,125 +277,118 @@
 <body>
 <div class="container">
 
-    <!-- Happ Icon -->
-    <div class="app-icon">
+    <!-- Иконка Happ -->
+    <div class="happ-icon">
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="white" stroke-width="2"/>
             <path d="M12 22V12" stroke="white" stroke-width="2"/>
             <path d="M21 7L12 12L3 7" stroke="white" stroke-width="2"/>
         </svg>
     </div>
 
     <h1>VPN-FAST-AI</h1>
-    <div class="forever-badge">★ навсегда бесплатно ★</div>
+    <div class="forever">★ навсегда бесплатно ★</div>
 
-    <!-- Counter -->
+    <!-- Счётчик -->
     <div class="counter">
         🔥 <span id="counterValue" class="counter-number">0</span> пользователей уже используют VPN-FAST-AI
     </div>
 
-    <!-- Promo Block -->
-    <div class="promo-card">
-        <h3>⚡ Безопасный интернет в 1 клик</h3>
-        <p>Разблокируйте все соцсети и нейросети с максимальной скоростью через приложение Happ.</p>
-        <button class="btn-primary" id="promoInstallBtn" style="margin-bottom:0; padding:12px;">Установить конфиг</button>
+    <!-- Промо -->
+    <div class="promo">
+        <h3 style="margin-bottom:8px;">⚡ Безопасный интернет в 1 клик</h3>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.85rem;">Разблокируйте все соцсети и нейросети через Happ</p>
+        <button class="btn" id="promoBtn" style="margin-bottom:0; padding:12px; margin-top:12px;">Установить конфиг</button>
     </div>
 
-    <!-- Main Install Button -->
-    <button class="btn-primary" id="installBtn">📲 Установить в Happ</button>
+    <!-- Главная кнопка -->
+    <button class="btn" id="installBtn">📲 Установить в Happ</button>
 
-    <!-- QR Code -->
+    <!-- QR код -->
     <div class="qr-section">
         <div class="qr-wrapper">
             <div id="qrcode"></div>
             <div class="qr-pulse"><div></div><div></div><div></div></div>
         </div>
-        <p style="font-size:0.8rem; color:var(--text-dim);">Отсканируй камерой iOS, чтобы открыть на iPhone</p>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.5);">Отсканируй камерой iOS, чтобы открыть сайт</p>
     </div>
 
-    <!-- Services -->
+    <!-- Сервисы -->
     <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Работает с</div>
-    <div class="services-grid">
-        <div class="service-card">TikTok</div><div class="service-card">YouTube</div>
-        <div class="service-card">Instagram</div><div class="service-card">ChatGPT</div>
-        <div class="service-card">Twitter</div><div class="service-card">Discord</div>
-        <div class="service-card">Netflix</div><div class="service-card">Spotify</div>
+    <div class="services">
+        <div class="service">TikTok</div><div class="service">YouTube</div>
+        <div class="service">Instagram</div><div class="service">ChatGPT</div>
+        <div class="service">Twitter</div><div class="service">Discord</div>
+        <div class="service">Netflix</div><div class="service">Spotify</div>
     </div>
 
-    <!-- Instructions -->
+    <!-- Инструкция -->
     <div class="steps">
         <h2 style="font-size:1.4rem; margin-bottom:20px;">Как подключить?</h2>
-        <div class="step"><div class="step-number">1</div><div>Скачайте приложение <strong>Happ</strong> в App Store.</div></div>
-        <div class="step"><div class="step-number">2</div><div>Нажмите кнопку "Установить в Happ" выше.</div></div>
-        <div class="step"><div class="step-number">3</div><div>Включите VPN в приложении и наслаждайтесь!</div></div>
+        <div class="step"><div class="step-num">1</div><div>Скачай <strong>Happ</strong> в App Store</div></div>
+        <div class="step"><div class="step-num">2</div><div>Нажми "Установить в Happ" выше</div></div>
+        <div class="step"><div class="step-num">3</div><div>Включи VPN и пользуйся 🚀</div></div>
     </div>
 
-    <!-- FAQ Accordion -->
+    <!-- FAQ -->
     <div class="faq">
-        <div class="faq-item"><div class="faq-question">Это бесплатно? <span>+</span></div><div class="faq-answer">Да, данный конфиг предоставляется бесплатно в рамках проекта VPN-FAST-AI.</div></div>
-        <div class="faq-item"><div class="faq-question">Какая скорость? <span>+</span></div><div class="faq-answer">Серверы используют протокол Reality, что обеспечивает скорость до 1 Гбит/с и минимальный пинг.</div></div>
-        <div class="faq-item"><div class="faq-question">Безопасно ли это? <span>+</span></div><div class="faq-answer">Мы не храним логи. Весь трафик шифруется на стороне вашего устройства.</div></div>
-        <div class="faq-item"><div class="faq-question">Работает ли на Mac? <span>+</span></div><div class="faq-answer">Приложение Happ доступно для iPhone и iPad. Для Mac используйте аналогичные V2Ray клиенты.</div></div>
+        <div class="faq-item"><div class="faq-question">Это бесплатно? <span>+</span></div><div class="faq-answer">Да, конфиг предоставляется бесплатно навсегда.</div></div>
+        <div class="faq-item"><div class="faq-question">Какая скорость? <span>+</span></div><div class="faq-answer">REALITY протокол, скорость до 1 Гбит/с.</div></div>
+        <div class="faq-item"><div class="faq-question">Безопасно ли? <span>+</span></div><div class="faq-answer">Логи не храним, трафик шифруется.</div></div>
+        <div class="faq-item"><div class="faq-question">Работает на Mac? <span>+</span></div><div class="faq-answer">Happ только для iOS. Для Mac используйте другие клиенты.</div></div>
     </div>
 
-    <!-- Share Button -->
+    <!-- Поделиться -->
     <button class="share-btn" id="shareBtn">🔗 Поделиться сайтом</button>
 
     <!-- App Store -->
-    <a href="https://apps.apple.com/app/happ-proxy-utility/id6444634424" target="_blank" class="appstore-link">
+    <a href="https://apps.apple.com/app/happ-proxy-utility/id6444634424" target="_blank" class="appstore">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
     </a>
 
     <div class="disclaimer">
-        Данный сервис не связан официально с Apple Inc. или разработчиками Happ. Используя конфиг, вы принимаете ответственность за свои действия в сети.
+        Данный сайт не связан с Apple Inc. или разработчиками Happ.
     </div>
 </div>
 
-<div id="toast">Ссылка скопирована!</div>
+<div id="toast">✅ Ссылка скопирована!</div>
 
 <script>
-    // === ВАШ РЕАЛЬНЫЙ JSON НА GitHub ===
+    // ========== ВАША ПРАВИЛЬНАЯ ССЫЛКА НА JSON ==========
     const CONFIG_URL = "https://yusikyt.github.io/vpn-fast-ai/vpn-fast-ai.json";
-    const HAPP_DEEP_LINK = `hap://import/config?url=${encodeURIComponent(CONFIG_URL)}`;
+    const HAPP_LINK = `hap://import/config?url=${encodeURIComponent(CONFIG_URL)}`;
 
     // Кнопки установки
-    function installConfig() {
-        window.location.href = HAPP_DEEP_LINK;
-        // Подсказка, если Happ не открылся
+    function installHapp() {
+        window.location.href = HAPP_LINK;
         setTimeout(() => {
             const toast = document.getElementById("toast");
-            toast.innerText = "⚠️ Не удалось открыть Happ. Установите приложение из App Store.";
+            toast.innerText = "⚠️ Не открывается? Установи Happ из App Store";
             toast.classList.add("show");
             setTimeout(() => toast.classList.remove("show"), 3000);
         }, 2000);
     }
 
-    document.getElementById("installBtn").onclick = installConfig;
-    document.getElementById("promoInstallBtn").onclick = installConfig;
+    document.getElementById("installBtn").onclick = installHapp;
+    document.getElementById("promoBtn").onclick = installHapp;
 
-    // === Анимированный счётчик ===
+    // ========== АНИМИРОВАННЫЙ СЧЁТЧИК ==========
     const counterSpan = document.getElementById("counterValue");
-    let start = 0;
-    const end = 12847;
-    const duration = 1500;
-    const stepTime = 20;
-    const steps = duration / stepTime;
-    const increment = end / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-            counterSpan.innerText = end.toLocaleString();
-            clearInterval(timer);
+    let count = 0;
+    const target = 12847;
+    const interval = setInterval(() => {
+        count += Math.ceil(target / 75);
+        if (count >= target) {
+            counterSpan.innerText = target.toLocaleString();
+            clearInterval(interval);
         } else {
-            counterSpan.innerText = Math.floor(current).toLocaleString();
+            counterSpan.innerText = count.toLocaleString();
         }
-    }, stepTime);
+    }, 20);
 
-    // === QR-код: ведёт на ТЕКУЩИЙ САЙТ ===
+    // ========== QR-КОД (ведёт на ЭТОТ САЙТ) ==========
     window.addEventListener("DOMContentLoaded", () => {
-        const qrDiv = document.getElementById("qrcode");
-        new QRCode(qrDiv, {
+        new QRCode(document.getElementById("qrcode"), {
             text: window.location.href,
             width: 140,
             height: 140,
@@ -445,19 +398,17 @@
         });
     });
 
-    // === FAQ Аккордеон ===
+    // ========== FAQ АККОРДЕОН ==========
     document.querySelectorAll(".faq-item").forEach(item => {
         const header = item.querySelector(".faq-question");
-        const iconSpan = header.querySelector("span");
         header.addEventListener("click", () => {
-            const isActive = item.classList.contains("active");
-            document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("active"));
-            if (!isActive) item.classList.add("active");
-            iconSpan.textContent = item.classList.contains("active") ? "−" : "+";
+            item.classList.toggle("active");
+            const icon = header.querySelector("span");
+            icon.textContent = item.classList.contains("active") ? "−" : "+";
         });
     });
 
-    // === Поделиться ===
+    // ========== КНОПКА ПОДЕЛИТЬСЯ ==========
     const shareBtn = document.getElementById("shareBtn");
     const toast = document.getElementById("toast");
 
@@ -467,8 +418,8 @@
             toast.innerText = "✅ Ссылка скопирована!";
             toast.classList.add("show");
             setTimeout(() => toast.classList.remove("show"), 2000);
-        } catch (err) {
-            toast.innerText = "❌ Не удалось скопировать";
+        } catch {
+            toast.innerText = "❌ Нажми и удерживай ссылку в браузере";
             toast.classList.add("show");
             setTimeout(() => toast.classList.remove("show"), 2000);
         }
