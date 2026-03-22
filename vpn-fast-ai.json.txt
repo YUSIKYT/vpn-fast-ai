@@ -1,0 +1,162 @@
+{
+  "dns" : {
+    "queryStrategy" : "UseIP",
+    "servers" : [
+      "1.1.1.1",
+      "1.0.0.1"
+    ]
+  },
+  "inbounds" : [
+    {
+      "listen" : "127.0.0.1",
+      "port" : 10808,
+      "protocol" : "socks",
+      "settings" : {
+        "auth" : "noauth",
+        "udp" : true
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "http",
+          "tls",
+          "quic"
+        ],
+        "enabled" : true,
+        "routeOnly" : false
+      },
+      "tag" : "socks"
+    },
+    {
+      "listen" : "127.0.0.1",
+      "port" : 10809,
+      "protocol" : "http",
+      "settings" : {
+        "allowTransparent" : false
+      },
+      "sniffing" : {
+        "destOverride" : [
+          "http",
+          "tls",
+          "quic"
+        ],
+        "enabled" : true,
+        "routeOnly" : false
+      },
+      "tag" : "http"
+    }
+  ],
+  "log" : {
+    "access" : "\/private\/var\/mobile\/Containers\/Shared\/AppGroup\/66135424-B278-4111-BF99-F1FE0BF5C4FE\/Library\/Application Support\/Xray\/logs\/access.log",
+    "dnsLog" : true,
+    "loglevel" : "Warning"
+  },
+  "outbounds" : [
+    {
+      "protocol" : "vless",
+      "settings" : {
+        "vnext" : [
+          {
+            "address" : "185.193.89.188",
+            "port" : 443,
+            "users" : [
+              {
+                "encryption" : "none",
+                "flow" : "xtls-rprx-vision",
+                "id" : "78ae954f-bdb0-4949-b482-f04e2d7eb73a"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings" : {
+        "network" : "tcp",
+        "realitySettings" : {
+          "publicKey" : "0OeL6eCb5h7RhLS38mJFjNztKMuHu0SCeiPzDm0afCo",
+          "serverName" : "fr1.thepatriot.ru",
+          "shortId" : "3ff6cfc6c5",
+          "show" : false
+        },
+        "security" : "reality"
+      },
+      "tag" : "proxy"
+    },
+    {
+      "protocol" : "freedom",
+      "tag" : "direct"
+    },
+    {
+      "protocol" : "blackhole",
+      "tag" : "block"
+    }
+  ],
+  "remarks" : "VPN-FAST-AI ★ FOREVER",
+  "routing" : {
+    "domainMatcher" : "hybrid",
+    "domainStrategy" : "IPIfNonMatch",
+    "rules" : [
+      {
+        "domain" : [
+          "tiktok.com",
+          "tiktokcdn.com",
+          "tiktokv.com",
+          "tiktokcdn-us.com",
+          "musical.ly",
+          "byteoversea.com",
+          "ibytedtos.com",
+          "ipstatp.com",
+          "snssdk.com",
+          "amemv.com",
+          "instagram.com",
+          "cdninstagram.com",
+          "igcdn.com",
+          "youtube.com",
+          "googlevideo.com",
+          "youtu.be",
+          "ytimg.com",
+          "chatgpt.com",
+          "openai.com",
+          "auth0.openai.com",
+          "twitter.com",
+          "x.com",
+          "twimg.com",
+          "discord.com",
+          "discordapp.com",
+          "netflix.com",
+          "nflxvideo.net",
+          "spotify.com",
+          "scdn.co",
+          "pinterest.com",
+          "pinimg.com",
+          "snapchat.com"
+        ],
+        "outboundTag" : "proxy",
+        "type" : "field"
+      },
+      {
+        "domain" : [
+          "sberbank.ru",
+          "gosuslugi.ru",
+          "mail.ru",
+          "yandex.ru",
+          "vk.com",
+          "ok.ru",
+          "rutube.ru",
+          "ozon.ru",
+          "wildberries.ru",
+          "avito.ru",
+          "cian.ru",
+          "2gis.ru"
+        ],
+        "outboundTag" : "direct",
+        "type" : "field"
+      },
+      {
+        "outboundTag" : "direct",
+        "protocol" : [
+          "bittorrent"
+        ],
+        "type" : "field"
+      }
+    ]
+  }
+}
