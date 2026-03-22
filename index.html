@@ -2,13 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>VPN-FAST-AI | Happ iOS</title>
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- QRCode Lib -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
@@ -18,142 +16,156 @@
             --card-bg: rgba(15, 20, 30, 0.7);
             --text-main: #ffffff;
             --text-dim: rgba(255, 255, 255, 0.6);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
+            background: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
         }
 
         .container {
+            max-width: 520px;
             width: 100%;
-            max-width: 480px;
-            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        /* --- 1. Happ Icon --- */
-        .app-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        /* Happ Icon */
+        .app-icon {
+            width: 88px;
+            height: 88px;
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             box-shadow: 0 0 20px rgba(20, 255, 236, 0.4);
             margin-bottom: 24px;
             position: relative;
         }
-        .app-logo::after {
+        .app-icon::after {
             content: '';
             position: absolute;
             inset: -4px;
             border-radius: 50%;
             border: 2px solid var(--accent-color);
-            animation: pulse-border 2s infinite;
+            animation: pulse-ring 2s infinite;
         }
-        @keyframes pulse-border {
+        @keyframes pulse-ring {
             0% { transform: scale(1); opacity: 1; }
             100% { transform: scale(1.2); opacity: 0; }
         }
 
-        /* --- 2. Headlines --- */
         h1 {
-            font-size: 32px;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin: 0 0 12px 0;
-            background: linear-gradient(to right, #fff, #8B5CF6, #14ffec);
+            background: linear-gradient(to right, #fff, var(--secondary-accent), var(--accent-color));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             letter-spacing: -1px;
+            margin-bottom: 8px;
         }
 
-        .badge {
+        .forever-badge {
             background: rgba(20, 255, 236, 0.1);
-            color: var(--accent-color);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 600;
             border: 1px solid rgba(20, 255, 236, 0.3);
-            margin-bottom: 20px;
-        }
-
-        /* --- 3. Counter --- */
-        #user-counter {
-            font-size: 16px;
-            color: #ffb800;
-            margin-bottom: 30px;
+            color: var(--accent-color);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
             font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-block;
         }
 
-        /* --- 4. Promo Block --- */
-        .promo-card {
-            width: 100%;
-            padding: 24px;
-            background: linear-gradient(135deg, rgba(20, 255, 236, 0.15), rgba(139, 92, 246, 0.15));
-            border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Counter */
+        .counter {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 12px 20px;
             margin-bottom: 24px;
-            backdrop-filter: blur(12px);
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        .counter-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffb800;
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* Promo card */
+        .promo-card {
+            background: linear-gradient(135deg, rgba(20, 255, 236, 0.12), rgba(139, 92, 246, 0.12));
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+        }
+        .promo-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         .promo-card p {
-            font-size: 15px;
-            margin-bottom: 20px;
             color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
         }
 
-        /* --- 5. Main Button --- */
+        /* Main Button */
         .btn-primary {
-            width: 100%;
-            padding: 18px;
-            border-radius: 20px;
+            background: linear-gradient(105deg, var(--accent-color), #00d1c1);
             border: none;
-            background: var(--accent-color);
-            color: #000;
+            width: 100%;
+            padding: 16px;
+            border-radius: 60px;
             font-weight: 800;
-            font-size: 18px;
-            cursor: pointer;
-            transition: var(--transition);
+            font-size: 1.1rem;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 40px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            margin-bottom: 32px;
+            color: #000;
             text-decoration: none;
         }
-        .btn-primary:active {
-            transform: scale(0.96);
-        }
+        .btn-primary:active { transform: scale(0.97); }
 
-        /* --- 6. QR Code Section --- */
+        /* QR Section */
+        .qr-section {
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .qr-wrapper {
             position: relative;
-            padding: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 12px;
         }
         #qrcode {
-            background: #fff;
+            background: white;
             padding: 12px;
-            border-radius: 16px;
+            border-radius: 24px;
             position: relative;
             z-index: 2;
         }
@@ -162,246 +174,216 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 140px;
-            height: 140px;
-            z-index: 1;
+            width: 180px;
+            height: 180px;
+            pointer-events: none;
         }
         .qr-pulse div {
             position: absolute;
             width: 100%;
             height: 100%;
             border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            animation: qr-ripple 3s infinite;
+            border-radius: 28px;
+            animation: ripple 2.5s infinite;
             opacity: 0;
         }
-        .qr-pulse div:nth-child(2) { animation-delay: 1s; }
-        .qr-pulse div:nth-child(3) { animation-delay: 2s; }
-
-        @keyframes qr-ripple {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        .qr-pulse div:nth-child(2) { animation-delay: 0.8s; }
+        .qr-pulse div:nth-child(3) { animation-delay: 1.6s; }
+        @keyframes ripple {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            100% { transform: scale(1.3); opacity: 0; }
         }
 
-        /* --- 7. Service Grid --- */
-        .grid-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .service-grid {
+        /* Services grid */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 50px;
-        }
-        @media (max-width: 400px) {
-            .service-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        .service-item {
-            background: var(--card-bg);
-            padding: 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* --- 8. Instructions --- */
-        .steps {
-            text-align: left;
+            gap: 10px;
             width: 100%;
             margin-bottom: 40px;
         }
+        @media (max-width: 450px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .service-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Steps */
+        .steps {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 32px;
+        }
         .step {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             margin-bottom: 20px;
         }
-        .step-num {
-            min-width: 32px;
-            height: 32px;
+        .step-number {
+            width: 36px;
+            height: 36px;
             background: var(--accent-color);
             color: #000;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-weight: 800;
+            flex-shrink: 0;
         }
 
-        /* --- 9. FAQ Accordion --- */
+        /* FAQ */
         .faq {
             width: 100%;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         .faq-item {
             background: var(--card-bg);
-            border-radius: 16px;
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
             margin-bottom: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
         }
-        .faq-header {
-            padding: 16px 20px;
+        .faq-question {
+            padding: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-weight: 600;
         }
-        .faq-content {
-            padding: 0 20px;
+        .faq-answer {
+            padding: 0 16px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
+            transition: max-height 0.3s ease;
             color: var(--text-dim);
-            font-size: 14px;
-            text-align: left;
+            font-size: 0.85rem;
         }
-        .faq-item.active .faq-content {
-            max-height: 200px;
+        .faq-item.active .faq-answer {
+            max-height: 150px;
             padding-bottom: 16px;
         }
 
-        /* --- 10. Share & App Store --- */
+        /* Share & App Store */
         .share-btn {
-            background: none;
+            background: transparent;
             border: 1px solid var(--text-dim);
             color: var(--text-main);
-            padding: 12px 24px;
-            border-radius: 100px;
-            cursor: pointer;
+            padding: 12px 28px;
+            border-radius: 60px;
             font-weight: 600;
-            margin-bottom: 30px;
-            transition: var(--transition);
+            cursor: pointer;
+            margin-bottom: 24px;
         }
-        .share-btn:active { transform: scale(0.95); }
-
-        .app-store-badge {
-            display: block;
-            width: 180px;
-            margin-bottom: 30px;
+        .appstore-link {
+            display: inline-block;
+            margin-bottom: 24px;
         }
-
+        .appstore-link img {
+            height: 44px;
+        }
         .disclaimer {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.3);
-            max-width: 300px;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            max-width: 280px;
         }
 
-        /* Notification */
         #toast {
             position: fixed;
             bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
             background: var(--accent-color);
             color: #000;
             padding: 12px 24px;
-            border-radius: 100px;
-            font-weight: 700;
-            transform: translateY(100px);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 100;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: transform 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
         }
-        #toast.show { transform: translateY(0); }
+        #toast.show { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <!-- Logo -->
-    <div class="app-logo">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 22V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21 7L12 12L3 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Happ Icon -->
+    <div class="app-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 22V12" stroke="white" stroke-width="2"/>
+            <path d="M21 7L12 12L3 7" stroke="white" stroke-width="2"/>
         </svg>
     </div>
 
     <h1>VPN-FAST-AI</h1>
-    <div class="badge">навсегда бесплатно</div>
+    <div class="forever-badge">★ навсегда бесплатно ★</div>
 
-    <div id="user-counter">🔥 0 пользователей уже используют VPN-FAST-AI</div>
-
-    <!-- Promo -->
-    <div class="promo-card">
-        <h3 style="margin-top:0">Безопасный интернет в 1 клик</h3>
-        <p>Разблокируйте все соцсети и нейросети с максимальной скоростью через приложение Happ.</p>
-        <button class="btn-primary" onclick="installConfig()" style="margin-bottom:0; font-size: 14px; padding: 12px;">Установить конфиг</button>
+    <!-- Counter -->
+    <div class="counter">
+        🔥 <span id="counterValue" class="counter-number">0</span> пользователей уже используют VPN-FAST-AI
     </div>
 
-    <!-- Main Button -->
-    <a href="#" id="installBtn" class="btn-primary">
-        📲 Установить в Happ
-    </a>
+    <!-- Promo Block -->
+    <div class="promo-card">
+        <h3>⚡ Безопасный интернет в 1 клик</h3>
+        <p>Разблокируйте все соцсети и нейросети с максимальной скоростью через приложение Happ.</p>
+        <button class="btn-primary" id="promoInstallBtn" style="margin-bottom:0; padding:12px;">Установить конфиг</button>
+    </div>
+
+    <!-- Main Install Button -->
+    <button class="btn-primary" id="installBtn">📲 Установить в Happ</button>
 
     <!-- QR Code -->
-    <div class="qr-wrapper">
-        <div class="qr-pulse">
-            <div></div><div></div><div></div>
+    <div class="qr-section">
+        <div class="qr-wrapper">
+            <div id="qrcode"></div>
+            <div class="qr-pulse"><div></div><div></div><div></div></div>
         </div>
-        <div id="qrcode"></div>
+        <p style="font-size:0.8rem; color:var(--text-dim);">Отсканируй камерой iOS, чтобы открыть на iPhone</p>
     </div>
-    <p style="font-size: 13px; color: var(--text-dim); margin-top: -20px; margin-bottom: 40px;">Отсканируй камерой iOS, чтобы открыть на iPhone</p>
 
     <!-- Services -->
-    <div class="grid-title">Работает с</div>
-    <div class="service-grid">
-        <div class="service-item">TikTok</div>
-        <div class="service-item">YouTube</div>
-        <div class="service-item">Instagram</div>
-        <div class="service-item">ChatGPT</div>
-        <div class="service-item">Twitter</div>
-        <div class="service-item">Discord</div>
-        <div class="service-item">Netflix</div>
-        <div class="service-item">Spotify</div>
+    <div style="font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;">Работает с</div>
+    <div class="services-grid">
+        <div class="service-card">TikTok</div><div class="service-card">YouTube</div>
+        <div class="service-card">Instagram</div><div class="service-card">ChatGPT</div>
+        <div class="service-card">Twitter</div><div class="service-card">Discord</div>
+        <div class="service-card">Netflix</div><div class="service-card">Spotify</div>
     </div>
 
     <!-- Instructions -->
     <div class="steps">
-        <h2 style="font-size: 20px; margin-bottom: 24px;">Как подключить?</h2>
-        <div class="step">
-            <div class="step-num">1</div>
-            <div>Скачайте приложение <b>Happ</b> в App Store.</div>
-        </div>
-        <div class="step">
-            <div class="step-num">2</div>
-            <div>Нажмите кнопку "Установить в Happ" выше.</div>
-        </div>
-        <div class="step">
-            <div class="step-num">3</div>
-            <div>Включите VPN в приложении и наслаждайтесь!</div>
-        </div>
+        <h2 style="font-size:1.4rem; margin-bottom:20px;">Как подключить?</h2>
+        <div class="step"><div class="step-number">1</div><div>Скачайте приложение <strong>Happ</strong> в App Store.</div></div>
+        <div class="step"><div class="step-number">2</div><div>Нажмите кнопку "Установить в Happ" выше.</div></div>
+        <div class="step"><div class="step-number">3</div><div>Включите VPN в приложении и наслаждайтесь!</div></div>
     </div>
 
-    <!-- FAQ -->
+    <!-- FAQ Accordion -->
     <div class="faq">
-        <div class="faq-item">
-            <div class="faq-header">Это бесплатно? <span>+</span></div>
-            <div class="faq-content">Да, данный конфиг предоставляется бесплатно в рамках проекта VPN-FAST-AI.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-header">Какая скорость? <span>+</span></div>
-            <div class="faq-content">Серверы используют протокол Reality, что обеспечивает скорость до 1 Гбит/с и минимальный пинг.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-header">Безопасно ли это? <span>+</span></div>
-            <div class="faq-content">Мы не храним логи. Весь трафик шифруется на стороне вашего устройства.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-header">Работает ли на Mac? <span>+</span></div>
-            <div class="faq-content">Приложение Happ доступно для iPhone и iPad. Для Mac используйте аналогичные V2Ray клиенты.</div>
-        </div>
+        <div class="faq-item"><div class="faq-question">Это бесплатно? <span>+</span></div><div class="faq-answer">Да, данный конфиг предоставляется бесплатно в рамках проекта VPN-FAST-AI.</div></div>
+        <div class="faq-item"><div class="faq-question">Какая скорость? <span>+</span></div><div class="faq-answer">Серверы используют протокол Reality, что обеспечивает скорость до 1 Гбит/с и минимальный пинг.</div></div>
+        <div class="faq-item"><div class="faq-question">Безопасно ли это? <span>+</span></div><div class="faq-answer">Мы не храним логи. Весь трафик шифруется на стороне вашего устройства.</div></div>
+        <div class="faq-item"><div class="faq-question">Работает ли на Mac? <span>+</span></div><div class="faq-answer">Приложение Happ доступно для iPhone и iPad. Для Mac используйте аналогичные V2Ray клиенты.</div></div>
     </div>
 
-    <!-- Share -->
-    <button class="share-btn" onclick="shareSite()">🔗 Поделиться сайтом</button>
+    <!-- Share Button -->
+    <button class="share-btn" id="shareBtn">🔗 Поделиться сайтом</button>
 
     <!-- App Store -->
-    <a href="https://apps.apple.com/app/happ-proxy-utility/id6444634424" target="_blank">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" class="app-store-badge" alt="App Store">
+    <a href="https://apps.apple.com/app/happ-proxy-utility/id6444634424" target="_blank" class="appstore-link">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
     </a>
 
     <div class="disclaimer">
@@ -412,90 +394,85 @@
 <div id="toast">Ссылка скопирована!</div>
 
 <script>
-    // --- Configuration ---
-    // Замените URL ниже на ваш реальный URL к JSON файлу, если потребуется
-    const configUrl = "https://yusikyt.github.io/vpn-fast-ai/";
-    const happDeepLink = `hap://import/config?url=${configUrl}`;
+    // === ВАШ РЕАЛЬНЫЙ JSON НА GitHub ===
+    const CONFIG_URL = "https://yusikyt.github.io/vpn-fast-ai/vpn-fast-ai.json";
+    const HAPP_DEEP_LINK = `hap://import/config?url=${encodeURIComponent(CONFIG_URL)}`;
 
-    // 1. Установка Deep Link на кнопки
-    const installBtn = document.getElementById('installBtn');
-    const installConfig = () => {
-        window.location.href = happDeepLink;
-    };
-    installBtn.onclick = (e) => {
-        e.preventDefault();
-        installConfig();
-    };
-
-    // 2. Счётчик пользователей
-    function animateCounter(id, start, end, duration) {
-        let obj = document.getElementById(id);
-        let range = end - start;
-        let minTimer = 50;
-        let stepTime = Math.abs(Math.floor(duration / range));
-        stepTime = Math.max(stepTime, minTimer);
-        let startTime = new Date().getTime();
-        let endTime = startTime + duration;
-        let timer;
-
-        function run() {
-            let now = new Date().getTime();
-            let remaining = Math.max((endTime - now) / duration, 0);
-            let value = Math.round(end - (remaining * range));
-            obj.innerText = `🔥 ${value.toLocaleString()} пользователей уже используют VPN-FAST-AI`;
-            if (value == end) {
-                clearInterval(timer);
-            }
-        }
-        timer = setInterval(run, stepTime);
-        run();
+    // Кнопки установки
+    function installConfig() {
+        window.location.href = HAPP_DEEP_LINK;
+        // Подсказка, если Happ не открылся
+        setTimeout(() => {
+            const toast = document.getElementById("toast");
+            toast.innerText = "⚠️ Не удалось открыть Happ. Установите приложение из App Store.";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }, 2000);
     }
 
-    // 3. QR Код
-    function generateQR() {
-        const qrContainer = document.getElementById("qrcode");
-        new QRCode(qrContainer, {
+    document.getElementById("installBtn").onclick = installConfig;
+    document.getElementById("promoInstallBtn").onclick = installConfig;
+
+    // === Анимированный счётчик ===
+    const counterSpan = document.getElementById("counterValue");
+    let start = 0;
+    const end = 12847;
+    const duration = 1500;
+    const stepTime = 20;
+    const steps = duration / stepTime;
+    const increment = end / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            counterSpan.innerText = end.toLocaleString();
+            clearInterval(timer);
+        } else {
+            counterSpan.innerText = Math.floor(current).toLocaleString();
+        }
+    }, stepTime);
+
+    // === QR-код: ведёт на ТЕКУЩИЙ САЙТ ===
+    window.addEventListener("DOMContentLoaded", () => {
+        const qrDiv = document.getElementById("qrcode");
+        new QRCode(qrDiv, {
             text: window.location.href,
             width: 140,
             height: 140,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-    }
-
-    // 4. FAQ Accordion
-    document.querySelectorAll('.faq-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const item = header.parentElement;
-            item.classList.toggle('active');
-            const span = header.querySelector('span');
-            span.textContent = item.classList.contains('active') ? '−' : '+';
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
         });
     });
 
-    // 5. Share Functionality
-    function shareSite() {
-        const siteUrl = window.location.href;
-        const tempInput = document.createElement("input");
-        document.body.appendChild(tempInput);
-        tempInput.value = siteUrl;
-        tempInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(tempInput);
+    // === FAQ Аккордеон ===
+    document.querySelectorAll(".faq-item").forEach(item => {
+        const header = item.querySelector(".faq-question");
+        const iconSpan = header.querySelector("span");
+        header.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+            document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("active"));
+            if (!isActive) item.classList.add("active");
+            iconSpan.textContent = item.classList.contains("active") ? "−" : "+";
+        });
+    });
 
-        const toast = document.getElementById("toast");
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 2500);
-    }
+    // === Поделиться ===
+    const shareBtn = document.getElementById("shareBtn");
+    const toast = document.getElementById("toast");
 
-    // Initialization
-    window.onload = () => {
-        animateCounter("user-counter", 0, 12847, 1500);
-        generateQR();
+    shareBtn.onclick = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            toast.innerText = "✅ Ссылка скопирована!";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 2000);
+        } catch (err) {
+            toast.innerText = "❌ Не удалось скопировать";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 2000);
+        }
     };
 </script>
-
 </body>
 </html>
-
